@@ -88,16 +88,10 @@ BOOST_AUTO_TEST_CASE(ClassificationTest)
   int hiddenLayerSize = 100;
   arma::mat trainData, testData, dataset;
   arma::vec trainLabelsTemp, testLabelsTemp;
-  data::Load("mnist_data_small.csv", dataset, true);
-  trainData = dataset.submat(0, 0,
-      dataset.n_rows - 102, dataset.n_cols - 2);
-  testData = dataset.submat(dataset.n_rows - 102, 0 ,
-      dataset.n_rows - 2, dataset.n_cols - 2);
-  trainLabelsTemp = dataset.submat(0, dataset.n_cols - 1,
-      dataset.n_rows - 102, dataset.n_cols - 1);
-  testLabelsTemp = dataset.submat(dataset.n_rows - 102, dataset.n_cols - 1,
-      dataset.n_rows - 2, dataset.n_cols - 1);
-
+  data::Load("train.txt", trainData, true);
+  data::Load("trainlabel.txt", trainLabelsTemp, true);
+  data::Load("test.txt", testData, true);
+  data::Load("testlabel.txt", testLabelsTemp, true);
   arma::Row<size_t> trainLabels = arma::zeros<arma::Row<size_t>>(1,
       trainLabelsTemp.n_rows);
   arma::Row<size_t> testLabels = arma::zeros<arma::Row<size_t>>(1,
@@ -109,14 +103,8 @@ BOOST_AUTO_TEST_CASE(ClassificationTest)
   for (size_t i = 0; i < testLabelsTemp.n_rows; ++i)
     testLabels(i) = arma::as_scalar(testLabelsTemp.row(i));
 
-  std::cout << arma::size(trainLabels) << std::endl;
-  std::cout << arma::size(testLabels) << std::endl;
-
-  trainData = trainData.t();
-  testData = testData.t();
-
   arma::mat output, XRbm(hiddenLayerSize, trainData.n_cols),
-      YRbm(hiddenLayerSize, trainLabels.n_cols);
+      YRbm(hiddenLayerSize, testLabels.n_cols);
 
   XRbm.zeros();
   YRbm.zeros();
