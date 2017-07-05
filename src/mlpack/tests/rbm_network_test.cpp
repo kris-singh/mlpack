@@ -76,8 +76,6 @@ BOOST_AUTO_TEST_CASE(MiscTest)
                           "0, 1, 1;"
                           "1, 0, 1;"
                           "1, 1, 1;");
-  std::cout << X.n_rows << std::endl;
-  std::cout << X.n_cols << std::endl;
   X = X.t();
   BuildVanillaNetwork<>(X, 2);
 }
