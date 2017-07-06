@@ -86,9 +86,9 @@ BOOST_AUTO_TEST_CASE(ClassificationTest)
   int hiddenLayerSize = 100;
   arma::mat trainData, testData, dataset;
   arma::vec trainLabelsTemp, testLabelsTemp;
-  data::Load("train.txt", trainData, true);
+  data::Load("mnisttrain.txt", trainData, true);
   data::Load("trainlabel.txt", trainLabelsTemp, true);
-  data::Load("test.txt", testData, true);
+  data::Load("mnisttest.txt", testData, true);
   data::Load("testlabel.txt", testLabelsTemp, true);
   arma::Row<size_t> trainLabels = arma::zeros<arma::Row<size_t>>(1,
       trainLabelsTemp.n_rows);
