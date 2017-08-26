@@ -14,6 +14,10 @@ set(SOURCES
   constant_impl.hpp
   convolution.hpp
   convolution_impl.hpp
+  cross_entropy_error.hpp
+  cross_entropy_error_impl.hpp
+  cross_entropy_error_with_logits.hpp
+  cross_entropy_error_with_logits_impl.hpp
   dropconnect.hpp
   dropconnect_impl.hpp
   dropout.hpp
@@ -59,6 +63,8 @@ set(SOURCES
   recurrent_attention_impl.hpp
   reinforce_normal.hpp
   reinforce_normal_impl.hpp
+  resize.hpp
+  resize_impl.hpp
   select.hpp
   select_impl.hpp
   sequential.hpp
